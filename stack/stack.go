@@ -2,29 +2,29 @@ package stack
 
 import "errors"
 
-type IStack interface {
+type Stack interface {
 	Size() int
 	Push(i int)
 	Pop() (int, error)
 }
 
-type Stack struct {
+type stack struct {
 	data []int
 }
 
-func NewStack() IStack {
-	return &Stack{data: make([]int, 0)}
+func NewStack() Stack {
+	return &stack{data: make([]int, 0)}
 }
 
-func (s *Stack) Size() int {
+func (s *stack) Size() int {
 	return len(s.data)
 }
 
-func (s *Stack) Push(i int) {
+func (s *stack) Push(i int) {
 	s.data = append(s.data, i)
 }
 
-func (s *Stack) Pop() (int, error) {
+func (s *stack) Pop() (int, error) {
 	if s.Size() == 0 {
 		return -1, errors.New("stack is empty")
 	}
